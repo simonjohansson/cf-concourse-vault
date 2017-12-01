@@ -1,0 +1,13 @@
+bosh create-env ~/deployments/bosh-deployment/bosh.yml \
+  -o ~/deployments/bosh-deployment/virtualbox/cpi.yml \
+  -o ~/deployments/bosh-deployment/virtualbox/outbound-network.yml \
+  -o ~/deployments/bosh-deployment/bosh-lite.yml \
+  -o ~/deployments/bosh-deployment/bosh-lite-runc.yml \
+  -o ~/deployments/bosh-deployment/jumpbox-user.yml \
+  -v director_name="Bosh Lite Director" \
+  -v internal_ip=192.168.50.6 \
+  -v internal_gw=192.168.50.1 \
+  -v internal_cidr=192.168.50.0/24 \
+  -v outbound_network_name=NatNetwork \
+  --vars-store credentials/bosh.yml \
+  --state state/bosh.json
