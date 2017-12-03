@@ -13,9 +13,8 @@ https://bosh.io/docs/cli-v2.html#install
 mkdir ~/deployments
 git clone https://github.com/cloudfoundry/bosh-deployment ~/deployments/bosh-deployment
 # Use fork until these issues are merged
-# https://github.com/concourse/concourse-deployment/pull/20
-# https://github.com/concourse/concourse-deployment/pull/22
-git clone -b issues https://github.com/simonjohansson/concourse-deployment.git ~/deployments/concourse-deployment
+# https://github.com/concourse/concourse-deployment/pull/23
+git clone -b configurable-network https://github.com/simonjohansson/concourse-deployment.git ~/deployments/concourse-deployment
 ```
 
 ### Networking
