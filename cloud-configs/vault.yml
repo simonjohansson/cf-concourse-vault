@@ -1,0 +1,19 @@
+---
+azs:
+- name: z1
+
+networks:
+- name: default
+  subnets:
+  - az: z1
+    gateway: 10.244.18.1
+    range: 10.244.18.0/24
+
+vm_types:
+- name: default
+  network: default
+
+compilation:
+  az: z1
+  workers: 3
+  network: default

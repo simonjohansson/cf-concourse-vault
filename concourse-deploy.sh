@@ -11,6 +11,7 @@ yes | bosh deploy -d concourse $DEPLOYMENT_PATH/concourse.yml \
   -l $DEPLOYMENT_PATH/../versions.yml \
   -o $DEPLOYMENT_PATH/operations/static-web.yml \
   -o $DEPLOYMENT_PATH/operations/no-auth.yml \
+  -o operations/concourse/vault-token-auth.yml \
   --vars-store credentials/concourse-creds.yml \
   --var web_ip=10.244.16.2 \
   --var external_url=http://10.244.16.2:8080 \

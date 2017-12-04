@@ -1,0 +1,9 @@
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/vault?
+  value:
+    url: ((vault.url))
+    tls:
+      insecure_skip_verify: true
+    auth:
+      client_token: ((vault.auth.client_token))
+      backend: token
