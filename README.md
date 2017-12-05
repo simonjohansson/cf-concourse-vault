@@ -97,6 +97,19 @@ $ vault token-create --policy=concourse-policy -period="60000h" -format=json
 # PUT value of client_token from above at the bottom of credentials/concourse-creds.yml in vault.auth.client_token
 ```
 
+### GitHub auth
+```
+$ vault auth-enable github
+$ vault write auth/github/config organization=springernature
+$ cat << EOF > /tmp/engineering-enablement-policy.hcl
+path "concourse/engineering-enablement/*" {
+  capabilities =  ["create", "read", "update", "delete", "list"]
+}
+$ vault policy-write engineering-enablement-policy /tmp/engineering-enablement-policy.hcl
+$ vault write auth/github/map/teams/engineering-enablement value=engineering-enablement-policy
+EOF
+```
+
 ## Concourse
 ### deploy
 `./concourse-deploy.sh`
@@ -104,7 +117,7 @@ $ vault token-create --policy=concourse-policy -period="60000h" -format=json
 ### Logging in
 `fly -t ci login -c http://10.244.16.2:8080`
 
-### Setup a team
+### Setup a team with GitHub auth
 ```
 fly -t ci set-team -n engineering-enablement \
     --github-auth-client-id CLIENT_ID \
