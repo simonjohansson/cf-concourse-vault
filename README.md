@@ -104,6 +104,14 @@ $ vault token-create --policy=concourse-policy -period="60000h" -format=json
 ### Logging in
 `fly -t ci login -c http://10.244.16.2:8080`
 
+### Setup a team
+```
+fly -t ci set-team -n engineering-enablement \
+    --github-auth-client-id CLIENT_ID \
+    --github-auth-client-secret CLIENT_SECRET \
+    --github-auth-team springernature/engineering-enablement
+```
+
 If you dont have fly ctl, you can download it from
 ```
 for MacOS:
