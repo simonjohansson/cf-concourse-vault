@@ -18,6 +18,7 @@ https://bosh.io/docs/cli-v2.html#install
 mkdir ~/deployments
 git clone https://github.com/cloudfoundry/bosh-deployment ~/deployments/bosh-deployment
 git clone git@github.com:cloudfoundry-community/vault-boshrelease.git ~/deployments/vault-deployment
+git clone https://github.com/cloudfoundry/cf-deployment.git ~/deployments/cf-deployment
 # Use fork until these issues are merged
 # https://github.com/concourse/concourse-deployment/pull/23
 git clone -b configurable-network https://github.com/simonjohansson/concourse-deployment.git ~/deployments/concourse-deployment
@@ -132,4 +133,16 @@ http://10.244.16.2:8080/api/v1/cli?arch=amd64&platform=darwin
 
 for Linux:
 http://10.244.16.2:8080/api/v1/cli?arch=amd64&platform=linux
+```
+
+## Cloud Foundry
+### deploy
+`./cf-deploy.sh`
+
+Grab some coffee.
+
+### Log in
+```
+cf api https://api.bosh-lite.com --skip-ssl-validation
+cf auth admin (bosh int credentials/cf-creds.yml --path /cf_admin_password)
 ```
