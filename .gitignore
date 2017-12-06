@@ -1,3 +1,9 @@
 state
 credentials/bosh.yml
 credentials/director_priv.key
+
+terraform/.terraform
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/variables.tf
+

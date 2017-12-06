@@ -2,7 +2,7 @@ DEPLOYMENT_PATH=~/deployments/concourse-deployment/cluster
 
 yes | bosh update-cloud-config $DEPLOYMENT_PATH/cloud_configs/vbox.yml \
   -v z1_gateway=10.244.16.1 \
-  -v z1_range=10.244.16.0/30 \
+  -v z1_range=10.244.16.0/24 \
   -v z1_static="[10.244.16.2]" \
   -v z2_gateway=10.244.17.1 \
   -v z2_range=10.244.17.0/24
