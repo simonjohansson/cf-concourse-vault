@@ -1,0 +1,5 @@
+- type: replace
+  path: /resource_pools/name=vms/cloud_properties?
+  value:
+    cpus: 4
+    memory: 8192

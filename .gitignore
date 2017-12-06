@@ -1,4 +1,3 @@
 state
 credentials/bosh.yml
 credentials/director_priv.key
-credentials/director_ssl_ca

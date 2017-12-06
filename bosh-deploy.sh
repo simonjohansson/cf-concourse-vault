@@ -4,6 +4,7 @@ bosh create-env ~/deployments/bosh-deployment/bosh.yml \
   -o ~/deployments/bosh-deployment/bosh-lite.yml \
   -o ~/deployments/bosh-deployment/bosh-lite-runc.yml \
   -o ~/deployments/bosh-deployment/jumpbox-user.yml \
+  -o operations/bosh/beef-it-up.yml \
   -v director_name="Bosh Lite Director" \
   -v internal_ip=192.168.50.6 \
   -v internal_gw=192.168.50.1 \
