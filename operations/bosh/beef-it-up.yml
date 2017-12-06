@@ -3,3 +3,4 @@
   value:
     cpus: 4
     memory: 8192
+    ephemeral_disk: 16_384
