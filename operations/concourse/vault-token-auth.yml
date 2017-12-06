@@ -7,3 +7,4 @@
     auth:
       client_token: ((vault.auth.client_token))
       backend: token
+    path_prefix: /springernature

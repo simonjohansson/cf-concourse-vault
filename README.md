@@ -53,32 +53,32 @@ https://github.com/direnv/direnv
 ### initialize
 ```
 $ vault init
-Unseal Key 1: BBab5p0NJBj3XoQXvNIuZOPjCOSIUxeqwVPlf/kQ6IgO
-Unseal Key 2: C7cxHESlY3WBWFTO5p+k0wWvFZcJ0+/rajCcGeokTUu+
-Unseal Key 3: ptARX3gGfJInx3/b11VPNQGaa0rdy3lk99zzPK+jMHoR
-Unseal Key 4: GglMh2j0dHt144SHYaTtiVgEyhRmqoM+CR3rHNpl8J2q
-Unseal Key 5: +ttdJQ9GoSNsXBpn6FoZJBFhAQUAEIi26tYeFAYUo6qk
-Initial Root Token: 6d9ca1e0-049c-9925-3b4b-e833a0a82fb3
+Unseal Key 1: USEAL_KEY_1
+Unseal Key 2: USEAL_KEY_2
+Unseal Key 3: USEAL_KEY_3
+Unseal Key 4: USEAL_KEY_4
+Unseal Key 5: USEAL_KEY_5
+Initial Root Token: INITIAL_ROOT_TOKEN
 
 ...
 ...
 
 $ vault unseal
-paste "Unseal Key 1"
+paste USEAL_KEY_1
 $ vault unseal
-paste "Unseal Key 2"
+paste USEAL_KEY_2
 $ vault unseal
-paste "Unseal Key 3"
-$ vault auth "Initial Root Token"
+paste USEAL_KEY_3
+$ vault auth INITIAL_ROOT_TOKEN
 ```
 
 ### setup for concourse
 ```
-$ vault mount -path=/concourse -description="Secrets for concourse pipelines" generic
-Successfully mounted 'generic' at '/concourse'!
+$ vault mount -path=/springernature -description="Secrets" generic
+Successfully mounted 'generic' at '/springernature'!
 
 $ cat << EOF > /tmp/concourse-policy.hcl
-path "concourse/*" {
+path "springernature/*" {
   policy = "read"
   capabilities =  ["read", "list"]
 }
@@ -103,12 +103,12 @@ $ vault token-create --policy=concourse-policy -period="60000h" -format=json
 $ vault auth-enable github
 $ vault write auth/github/config organization=springernature
 $ cat << EOF > /tmp/engineering-enablement-policy.hcl
-path "concourse/engineering-enablement/*" {
+path "springernature/engineering-enablement/*" {
   capabilities =  ["create", "read", "update", "delete", "list"]
 }
+EOF
 $ vault policy-write engineering-enablement-policy /tmp/engineering-enablement-policy.hcl
 $ vault write auth/github/map/teams/engineering-enablement value=engineering-enablement-policy
-EOF
 ```
 
 ## Concourse
