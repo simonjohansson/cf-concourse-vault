@@ -8,6 +8,7 @@ Installs CF, Concourse and Vault in BOSH lite.
 * Deploy and initialise Vault
 * Setup Vault for Concourse
 * Deploy concourse
+* Deploy Cloud Foundry
 
 ## Prerequisites
 ### Bosh V2
@@ -145,4 +146,14 @@ Grab some coffee.
 ```
 cf api https://api.bosh-lite.com --skip-ssl-validation
 cf auth admin $(bosh int credentials/cf-creds.yml --path /cf_admin_password)
+```
+
+### Create a space
+```
+cf create-space dev
+```
+
+### Target it
+```
+cf target -o system -s dev
 ```
