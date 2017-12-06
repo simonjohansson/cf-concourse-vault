@@ -144,5 +144,5 @@ Grab some coffee.
 ### Log in
 ```
 cf api https://api.bosh-lite.com --skip-ssl-validation
-cf auth admin (bosh int credentials/cf-creds.yml --path /cf_admin_password)
+cf auth admin $(bosh int credentials/cf-creds.yml --path /cf_admin_password)
 ```
