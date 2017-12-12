@@ -28,6 +28,11 @@ git clone -b configurable-network https://github.com/simonjohansson/concourse-de
 [Terraform](https://www.terraform.io/downloads.html) is used setup all the required stuff in Vault and setting up a GitHub auth team in Concourse.
 
 ## Run list
+### 0
+Allow direnv to set environment variables.
+
+`direnv allow`
+
 ### 1
 Deploy CF, Vault and Concourse
 ```
