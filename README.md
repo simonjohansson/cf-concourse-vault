@@ -73,18 +73,7 @@ $ vault auth INITIAL_ROOT_TOKEN
 
 #### 2.2
 Add client_id and client_secret as variables for Terraform, so it can configure GitHub -> Concourse auth
-
-```
-$ cat <<EOF > terraform/variables.tf
-variable "github_client_id" {
-  default = "BLAH"
-}
-
-variable "github_client_secret" {
-  default = "BLUH"
-}
-EOF
-```
+These vars are in `terraform/variables.tf`
 
 ### 2.3
 Make sure you have the fly cli on your path, this is needed by terraform in the next step.

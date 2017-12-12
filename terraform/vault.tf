@@ -23,11 +23,13 @@ EOT
 }
 
 # Github User
-resource "vault_policy" "engineering-enablement" {
-  name = "engineering-enablement"
+resource "vault_policy" "github-user" {
+  count = "${length(var.teams)}"
+
+  name = "${element(var.teams, count.index)}"
 
   policy = <<EOT
-path "/springernature/engineering-enablement/*" {
+path "/springernature/${element(var.teams, count.index)}/*" {
   capabilities = ["create", "read", "update", "delete", "list"]
 }
 EOT
@@ -35,12 +37,14 @@ EOT
   depends_on = ["vault_mount.springernature"]
 }
 
-resource "vault_generic_secret" "engineering-enablement-policy" {
-  path = "auth/github/map/teams/engineering-enablement"
+resource "vault_generic_secret" "team-policy" {
+  count = "${length(var.teams)}"
+
+  path = "auth/github/map/teams/${element(var.teams, count.index)}"
 
   data_json = <<EOT
 {
-  "value": "engineering-enablement"
+  "value": "${element(var.teams, count.index)}"
 }
 EOT
 
